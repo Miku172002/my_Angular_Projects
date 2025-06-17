@@ -1,0 +1,26 @@
+.sale-card {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-control:read-only {
+  background-color: #f8f9fa;
+}
+
+.alert {
+  margin-bottom: 1.5rem;
+}
+
+.spinner-border {
+  vertical-align: middle;
+}
+
+.form-select:invalid {
+  color: #6c757d;
+}
+
+.form-select option {
+  color: #212529;
+}

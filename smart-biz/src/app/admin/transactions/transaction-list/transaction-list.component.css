@@ -1,0 +1,26 @@
+.badge {
+  padding: 0.35em 0.65em;
+  font-size: 0.875em;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.table th {
+  position: sticky;
+  top: 0;
+  background-color: #343a40;
+}

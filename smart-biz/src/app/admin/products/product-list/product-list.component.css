@@ -1,0 +1,20 @@
+.table-responsive {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.text-warning {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.badge {
+  font-size: 0.75em;
+  padding: 0.35em 0.65em;
+}

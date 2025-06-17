@@ -1,0 +1,112 @@
+<div class="dashboard">
+  <div class="header">
+    <h1><i class="bi bi-speedometer2"></i> Admin Dashboard</h1>
+    <p class="text-muted">Overview of your business performance</p>
+  </div>
+
+  <div class="stats-grid">
+    <!-- Customers Card -->
+    <div class="stat-card bg-gradient-primary">
+      <div class="icon">
+        <i class="bi bi-people-fill"></i>
+      </div>
+      <div class="content">
+        <h3>Total Customers</h3>
+        <h2>{{ stats.customers }}</h2>
+      </div>
+    </div>
+
+    <!-- Products Card -->
+    <div class="stat-card bg-gradient-info">
+      <div class="icon">
+        <i class="bi bi-box-seam"></i>
+      </div>
+      <div class="content">
+        <h3>Products in Stock</h3>
+        <h2>{{ stats.products }}</h2>
+      </div>
+    </div>
+
+    <!-- Sales Card -->
+    <div class="stat-card bg-gradient-success">
+      <div class="icon">
+        <i class="bi bi-currency-rupee"></i>
+      </div>
+      <div class="content">
+        <h3>Total Sales</h3>
+        <h2>₹{{ stats.sales | number }}</h2>
+      </div>
+    </div>
+
+    <!-- Outstanding Card -->
+    <div class="stat-card bg-gradient-warning">
+      <div class="icon">
+        <i class="bi bi-exclamation-triangle"></i>
+      </div>
+      <div class="content">
+        <h3>Outstanding</h3>
+        <h2>₹{{ stats.outstanding | number }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-row">
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <h3><i class="bi bi-lightning"></i> Quick Actions</h3>
+      <div class="action-buttons">
+        <button routerLink="/admin/customers/add" class="action-btn btn-primary">
+          <i class="bi bi-person-plus"></i> Add Customer
+        </button>
+        <button routerLink="/admin/products/add" class="action-btn btn-success">
+          <i class="bi bi-plus-square"></i> Add Product
+        </button>
+        <button routerLink="/admin/transactions" class="action-btn btn-info">
+          <i class="bi bi-list-check"></i> View Transactions
+        </button>
+        <button routerLink="/admin/reports" class="action-btn btn-warning">
+          <i class="bi bi-graph-up"></i> View Reports
+        </button>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="recent-transactions">
+      <h3><i class="bi bi-clock-history"></i> Recent Transactions</h3>
+      <div class="transaction-list">
+        <div *ngFor="let t of recentTransactions" class="transaction-item">
+          <div class="transaction-detail">
+            <span class="product">{{ getProductName(t.productId) }}</span>
+            <span class="amount">₹{{ t.amount }}</span>
+          </div>
+          <div class="transaction-meta">
+            <span class="date">{{ t.date | date:'shortDate' }}</span>
+            <span class="badge" [ngClass]="{
+              'bg-success': t.paymentStatus === 'Paid',
+              'bg-warning': t.paymentStatus === 'Pending'
+            }">
+              {{ t.paymentStatus }}
+            </span>
+          </div>
+        </div>
+        <div *ngIf="recentTransactions.length === 0" class="no-data">
+          No recent transactions found
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Low Stock Alert -->
+  <div class="low-stock-alert" *ngIf="lowStockProducts.length > 0">
+    <h3><i class="bi bi-exclamation-triangle-fill"></i> Low Stock Alert</h3>
+    <div class="stock-items">
+      <div *ngFor="let p of lowStockProducts" class="stock-item">
+        <span class="product-name">{{ p.itemName }}</span>
+        <span class="stock-quantity">{{ p.stockQuantity }} left</span>
+        <button routerLink="/admin/products/edit/{{p.id}}" class="btn btn-sm btn-outline-primary">
+          Restock
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.table-responsive {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}

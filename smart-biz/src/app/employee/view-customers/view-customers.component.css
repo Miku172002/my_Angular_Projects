@@ -1,0 +1,22 @@
+.table-responsive {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+  font-weight: 500;
+  background-color: #f8f9fa;
+}
+
+.table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.input-group-text {
+  background-color: white;
+}
+
+.btn {
+  white-space: nowrap;
+}

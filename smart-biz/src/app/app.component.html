@@ -1,0 +1,13 @@
+<div class="app-container">
+  <app-navbar *ngIf="isLoggedIn"></app-navbar>
+  
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer *ngIf="isLoggedIn" class="footer">
+    <div class="container">
+      <span class="text-muted">© 2025 SmartBiz - Digital Ledger System</span>
+    </div>
+  </footer>
+</div>

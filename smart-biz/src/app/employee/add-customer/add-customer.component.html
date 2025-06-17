@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-success text-white">
+      <h3>Add New Customer</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          <i class="bi bi-exclamation-circle"></i> {{ errorMessage }}
+        </div>
+
+        <!-- Name Field -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name *</label>
+          <input type="text" class="form-control" id="name" 
+                 [(ngModel)]="customer.name" name="name" required>
+        </div>
+
+        <!-- Mobile Field -->
+        <div class="mb-3">
+          <label for="mobile" class="form-label">Mobile Number *</label>
+          <input type="text" class="form-control" id="mobile" 
+                 [(ngModel)]="customer.mobile" name="mobile" required>
+        </div>
+
+        <!-- Address Field -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" 
+                    [(ngModel)]="customer.address" name="address"></textarea>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary" 
+                  routerLink="/employee/dashboard" [disabled]="isSubmitting">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-success" 
+                  [disabled]="isSubmitting || !customerForm.form.valid">
+            <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1"></span>
+            {{ isSubmitting ? 'Saving...' : 'Save Customer' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

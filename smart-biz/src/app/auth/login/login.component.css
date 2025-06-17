@@ -1,0 +1,237 @@
+/* Main Container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+/* Login Card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Header Section */
+.login-header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  color: white;
+}
+
+.login-header .logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+.login-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.login-header p {
+  margin: 8px 0 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+/* Login Form */
+.login-form {
+  padding: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 15px;
+  color: #666;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.input-with-icon input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #666;
+}
+
+/* Login Options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 8px;
+}
+
+.forgot-password {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn:hover {
+  background: linear-gradient(135deg, #5a62e6 0%, #0008cc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 13, 255, 0.2);
+}
+
+.login-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+/* Demo Credentials */
+.demo-credentials {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555;
+}
+
+.demo-credentials p {
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+
+.demo-credentials ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.demo-credentials li {
+  margin-bottom: 4px;
+}
+
+/* Footer */
+.login-footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  font-size: 13px;
+  color: #666;
+}
+
+.login-footer a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+/* Error Message */
+.alert-error {
+  padding: 12px;
+  background-color: #fff0f0;
+  color: #d32f2f;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffcdd2;
+}
+
+.alert-error i {
+  margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

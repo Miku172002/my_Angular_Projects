@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2>Transaction History</h2>
+  <div class="alert alert-info">
+    Total Sales: ₹{{ getTotalSales() | number }}
+  </div>
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.date | date:'mediumDate' }}</td>
+          <td>{{ getCustomerName(transaction.customerId) }}</td>
+          <td>{{ getProductName(transaction.productId) }}</td>
+          <td>{{ transaction.quantity }}</td>
+          <td>₹{{ transaction.amount }}</td>
+          <td>
+            <span [class.badge-success]="transaction.paymentStatus === 'Paid'" 
+                  [class.badge-warning]="transaction.paymentStatus === 'Pending'" 
+                  class="badge">
+              {{ transaction.paymentStatus }}
+            </span>
+          </td>
+        </tr>
+        <tr *ngIf="transactions.length === 0">
+          <td colspan="6" class="text-center text-muted">No transactions found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

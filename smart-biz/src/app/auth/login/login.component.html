@@ -1,0 +1,84 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="assets/logo.png" alt="SmartBiz Logo" class="logo">
+      <h2>Welcome to SmartBiz</h2>
+      <p>Please sign in to continue</p>
+    </div>
+
+    <form (ngSubmit)="login()" class="login-form">
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="alert alert-error">
+        <i class="bi bi-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-with-icon">
+          <i class="bi bi-person-fill"></i>
+          <input 
+            type="text" 
+            id="username" 
+            [(ngModel)]="username" 
+            name="username" 
+            placeholder="Enter your username"
+            required
+          >
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-with-icon">
+          <i class="bi bi-lock-fill"></i>
+          <input 
+            [type]="passwordVisible ? 'text' : 'password'" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Enter your password"
+            required
+          >
+          <i 
+            class="bi toggle-password" 
+            [class.bi-eye-fill]="passwordVisible" 
+            [class.bi-eye-slash-fill]="!passwordVisible"
+            (click)="togglePasswordVisibility()"
+          ></i>
+        </div>
+      </div>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="login-options">
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="login-btn" [disabled]="isLoading">
+        <span *ngIf="isLoading" class="spinner"></span>
+        {{ isLoading ? 'Signing in...' : 'Sign In' }}
+      </button>
+
+      <!-- Demo Credentials -->
+      <div class="demo-credentials">
+        <p>Demo credentials:</p>
+        <ul>
+          <li><strong>Admin:</strong> admin / admin123</li>
+          <li><strong>Employee:</strong> ravi / ravi123</li>
+        </ul>
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p>Don't have an account? <a href="#">Contact admin</a></p>
+      <p class="copyright">© 2023 SmartBiz. All rights reserved.</p>
+    </div>
+  </div>
+</div>

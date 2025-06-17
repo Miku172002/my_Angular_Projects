@@ -1,0 +1,71 @@
+<div class="reports-container">
+  <div class="report-header">
+    <h1><i class="bi bi-graph-up"></i> Business Reports</h1>
+    <div class="date-range-selector">
+      <input type="date" [(ngModel)]="dateRange.start" (change)="generateReport()">
+      <span>to</span>
+      <input type="date" [(ngModel)]="dateRange.end" (change)="generateReport()">
+      <button class="btn btn-primary" (click)="generateReport()">
+        <i class="bi bi-arrow-clockwise"></i> Refresh
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="report-sections">
+    <!-- Summary Cards -->
+    <div class="report-summary-cards">
+      <div class="summary-card">
+        <h3>Total Sales</h3>
+        <p>₹{{ reportData.totalSales | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Outstanding Payments</h3>
+        <p>₹{{ reportData.outstandingPayments | number:'1.2-2' }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Total Customers</h3>
+        <p>{{ reportData.totalCustomers }}</p>
+      </div>
+      <div class="summary-card">
+        <h3>Products in Stock</h3>
+        <p>{{ reportData.totalProducts }}</p>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="recent-transactions">
+      <h4>Recent Transactions</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of reportData.recentTransactions">
+            <td>{{ t.date | date:'shortDate' }}</td>
+            <td>{{ getProductName(t.productId) }}</td>
+            <td>₹{{ t.amount | number:'1.2-2' }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-success': t.paymentStatus === 'Paid',
+                'bg-warning': t.paymentStatus === 'Pending'
+              }">
+                {{ t.paymentStatus }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

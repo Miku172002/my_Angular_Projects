@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Customer Directory</h2>
+    <div class="d-flex gap-2">
+      <div class="input-group" style="width: 300px;">
+        <span class="input-group-text"><i class="bi bi-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search customers..." 
+               [(ngModel)]="searchText">
+      </div>
+      <button routerLink="/employee/add-customer" class="btn btn-primary">
+        <i class="bi bi-plus-lg"></i> Add Customer
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Customer Table -->
+  <div *ngIf="!isLoading" class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of filteredCustomers">
+          <td>
+            <i class="bi bi-person-circle me-2"></i>
+            {{ customer.name }}
+          </td>
+          <td>{{ customer.mobile }}</td>
+          <td>{{ customer.address || '-' }}</td>
+        </tr>
+        <tr *ngIf="filteredCustomers.length === 0">
+          <td colspan="3" class="text-center text-muted py-4">
+            No customers found
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

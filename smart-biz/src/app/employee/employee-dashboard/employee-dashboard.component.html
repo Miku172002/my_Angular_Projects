@@ -1,0 +1,136 @@
+<div class="employee-dashboard">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <div class="welcome-message">
+      <h1>Welcome back, <span class="username">{{ username }}</span></h1>
+      <p class="greeting">Ready to assist customers today?</p>
+    </div>
+    <div class="user-badge">
+      <i class="bi bi-person-circle"></i>
+      <span>Employee Access</span>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bi bi-people"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Customers</h3>
+        <p>Manage customer records</p>
+      </div>
+      <button routerLink="/employee/view-customers" class="stat-action">
+        View All <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bi bi-box-seam"></i>
+      </div>
+      <div class="stat-info">
+        <h3>Products</h3>
+        <p>Browse inventory</p>
+      </div>
+      <button routerLink="/employee/view-products" class="stat-action">
+        View All <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bi bi-cart-plus"></i>
+      </div>
+      <div class="stat-info">
+        <h3>New Sale</h3>
+        <p>Record a transaction</p>
+      </div>
+      <button routerLink="/employee/add-transaction" class="stat-action">
+        Create <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="bi bi-person-plus"></i>
+      </div>
+      <div class="stat-info">
+        <h3>New Customer</h3>
+        <p>Add customer profile</p>
+      </div>
+      <button routerLink="/employee/add-customer" class="stat-action">
+        Add New <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions-section">
+    <h2 class="section-title">Quick Actions</h2>
+    <div class="action-buttons">
+      <button routerLink="/employee/add-transaction" class="action-btn primary">
+        <i class="bi bi-cart-plus"></i> Make a Sale
+      </button>
+      <button routerLink="/employee/add-customer" class="action-btn secondary">
+        <i class="bi bi-person-plus"></i> Add Customer
+      </button>
+      <button routerLink="/employee/view-customers" class="action-btn light">
+        <i class="bi bi-search"></i> Find Customer
+      </button>
+    </div>
+  </div>
+
+ <!-- Recent Activity Section -->
+<div class="recent-activity">
+  <h2 class="section-title">Recent Activity</h2>
+  
+  <div *ngIf="isLoading" class="text-center py-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading">
+    <div *ngIf="recentTransactions.length > 0; else noActivity" class="activity-list">
+      <div *ngFor="let transaction of recentTransactions" class="activity-item">
+        <div class="activity-icon" [ngClass]="{
+          'bg-success-light': transaction.paymentStatus === 'Paid',
+          'bg-warning-light': transaction.paymentStatus === 'Pending'
+        }">
+          <i class="bi" [ngClass]="{
+            'bi-cash': transaction.paymentStatus === 'Paid',
+            'bi-clock': transaction.paymentStatus === 'Pending'
+          }"></i>
+        </div>
+        <div class="activity-details">
+          <div class="activity-message">
+            Transaction with <strong>{{ transaction.customerName }}</strong>
+          </div>
+          <div class="activity-meta">
+            <span class="product">
+              <i class="bi bi-box"></i> {{ transaction.productName }}
+            </span>
+            <span class="quantity">
+              <i class="bi bi-123"></i> {{ transaction.quantity }} units
+            </span>
+            <span class="amount">
+              <i class="bi bi-currency-rupee"></i> {{ transaction.amount }}
+            </span>
+            <span class="date">
+              <i class="bi bi-calendar"></i> {{ formatDate(transaction.date) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noActivity>
+      <div class="no-activity">
+        <i class="bi bi-clock-history"></i>
+        <p>No recent transactions found</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

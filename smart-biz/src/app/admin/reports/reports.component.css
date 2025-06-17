@@ -1,0 +1,69 @@
+.reports-container {
+  padding: 20px;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-range-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.report-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.summary-card h3 {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.summary-card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.recent-transactions {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 50px;
+}
+
+.bg-success {
+  background-color: #28a745;
+}
+
+.bg-warning {
+  background-color: #ffc107;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: white;
+}

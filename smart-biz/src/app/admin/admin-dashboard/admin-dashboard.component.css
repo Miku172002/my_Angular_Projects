@@ -1,0 +1,204 @@
+/* Main Dashboard Layout */
+.dashboard {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-weight: 600;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card .icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  opacity: 0.8;
+}
+
+.stat-card .content h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.stat-card .content h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bg-gradient-info {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.bg-gradient-success {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+}
+
+/* Dashboard Row */
+.dashboard-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .dashboard-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Quick Actions */
+.quick-actions {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Recent Transactions */
+.recent-transactions {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-list {
+  margin-top: 1rem;
+}
+
+.transaction-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.product {
+  font-weight: 500;
+}
+
+.amount {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.transaction-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+/* Low Stock Alert */
+.low-stock-alert {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #ff758c;
+}
+
+.stock-items {
+  margin-top: 1rem;
+}
+
+.stock-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.stock-item:last-child {
+  border-bottom: none;
+}
+
+.product-name {
+  font-weight: 500;
+}
+
+.stock-quantity {
+  color: #ff758c;
+  font-weight: 600;
+}
+
+.no-data {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 1rem 0;
+}
